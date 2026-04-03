@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Melvin Seals & JGB — Setlist Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --card: #141419;
+    --card-hover: #1a1a22;
+    --border: #222230;
+    --text: #e0ddd5;
+    --muted: #706d65;
+    --accent: #d4a853;
+    --accent-glow: rgba(212,168,83,0.15);
+    --accent2: #7b93db;
+    --accent2-glow: rgba(123,147,219,0.12);
+    --tag-bg: #1a1a25;
+    --high: #c2553a;
+    --green: #6fba5e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  /* grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 100;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 16px 80px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---- HERO ---- */
+  .hero {
+    text-align: center;
+    padding: 48px 0 32px;
+    position: relative;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    margin-bottom: 12px;
+    opacity: 0.8;
+  }
+  .hero h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 42px;
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--muted);
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+  .hero-venue {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, rgba(123,147,219,0.08), rgba(212,168,83,0.06));
+    border: 1px solid rgba(123,147,219,0.15);
+    border-radius: 100px;
+    font-size: 13px;
+    color: var(--accent2);
+    font-weight: 500;
+  }
+  .pulse-dot {
+    width: 8px; height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(111,186,94,0.4); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(111,186,94,0); }
+  }
+
+  /* ---- COUNTDOWN ---- */
+  .countdown {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .cd-unit {
+    text-align: center;
+    min-width: 56px;
+  }
+  .cd-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 32px;
+    color: #fff;
+    line-height: 1;
+    position: relative;
+  }
+  .cd-num .tick {
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1), opacity 0.4s ease;
+  }
+  .cd-num .tick.flip {
+    transform: translateY(-6px);
+    opacity: 0;
+  }
+  .cd-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+  .cd-sep {
+    font-family: 'DM Mono', monospace;
+    font-size: 28px;
+    color: var(--border);
+    line-height: 1;
+    padding-top: 2px;
+    animation: blink 2s ease-in-out infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+  .cd-done {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    color: var(--accent);
+    margin-top: 20px;
+    font-style: italic;
+  }
+
+  /* ---- NAMES ---- */
+  .names {
+    text-align: center;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .names span {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ---- STATS ---- */
+  .stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    padding: 24px 0;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 32px;
+    color: #fff;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+
+  /* ---- SPOTIFY ---- */
+  .spotify-wrap {
+    margin: 8px 0 28px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--card);
+    position: relative;
+  }
+  .spotify-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    padding: 10px 14px 0;
+  }
+  .spotify-wrap iframe {
+    display: block;
+    width: 100%;
+    border: none;
+  }
+
+  /* ---- FILTERS ---- */
+  .filter-row {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 6px 0 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .filter-row::-webkit-scrollbar { display: none; }
+  .filter-btn {
+    flex-shrink: 0;
+    padding: 7px 14px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-size: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .filter-btn:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+  .filter-btn.active {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+
+  /* ---- SECTION LABELS ---- */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 12px;
+    padding-left: 2px;
+  }
+
+  /* ---- SONG CARDS ---- */
+  .song-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 16px 14px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  .song-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .song-card:hover {
+    border-color: rgba(212,168,83,0.3);
+    background: var(--card-hover);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  }
+  .song-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .song-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 20px;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .play-count {
+    flex-shrink: 0;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 400;
+    position: relative;
+  }
+  .pc-1 { background: var(--tag-bg); color: var(--muted); }
+  .pc-2 { background: rgba(160,184,96,0.1); color: #a0b860; border: 1px solid rgba(160,184,96,0.15); }
+  .pc-3 { background: rgba(212,168,83,0.1); color: var(--accent); border: 1px solid rgba(212,168,83,0.15); }
+  .pc-4 { background: rgba(194,85,58,0.1); color: var(--high); border: 1px solid rgba(194,85,58,0.15); }
+  .pc-5 { background: rgba(194,85,58,0.12); color: var(--high); border: 1px solid rgba(194,85,58,0.2); box-shadow: 0 0 12px rgba(194,85,58,0.15); }
+
+  .meta-row {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 10px;
+  }
+  .primary-artist {
+    font-size: 13px;
+    color: var(--accent2);
+    font-weight: 500;
+  }
+  .secondary-artist {
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 100px;
+    background: var(--tag-bg);
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  .tag-dead { color: #8b9dc3; border-color: rgba(139,157,195,0.2); background: rgba(139,157,195,0.06); }
+  .tag-jgb { color: var(--accent); border-color: rgba(212,168,83,0.2); background: rgba(212,168,83,0.06); }
+  .tag-soul { color: #c084c0; border-color: rgba(192,132,192,0.2); background: rgba(192,132,192,0.06); }
+  .tag-reggae { color: var(--green); border-color: rgba(111,186,94,0.2); background: rgba(111,186,94,0.06); }
+  .tag-dylan { color: #d4956a; border-color: rgba(212,149,106,0.2); background: rgba(212,149,106,0.06); }
+  .tag-rock { color: #b0a080; border-color: rgba(176,160,128,0.2); background: rgba(176,160,128,0.06); }
+
+  .desc {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ---- SHOWS ---- */
+  .shows-section {
+    margin-top: 40px;
+    padding-top: 28px;
+    position: relative;
+  }
+  .shows-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+  .shows-section h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 14px;
+  }
+  .show-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 13px;
+  }
+  .show-item.upcoming {
+    background: linear-gradient(90deg, rgba(212,168,83,0.06), transparent);
+    padding: 12px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(212,168,83,0.12);
+    border-bottom: 1px solid rgba(212,168,83,0.12);
+    margin-bottom: 4px;
+  }
+  .show-date {
+    color: var(--text);
+    font-weight: 500;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    width: 110px;
+    flex-shrink: 0;
+  }
+  .show-item.upcoming .show-date { color: var(--accent); }
+  .show-venue { color: var(--muted); text-align: right; }
+  .show-item.upcoming .show-venue { color: var(--text); }
+  .show-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-left: 8px;
+    font-family: 'DM Mono', monospace;
+  }
+  .show-note {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+    padding: 4px 0 8px;
+    opacity: 0.7;
+  }
+
+  /* ---- FOOTER ---- */
+  .footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--muted);
+    opacity: 0.5;
+    line-height: 1.8;
+  }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero { animation: fadeUp 0.8s ease forwards; }
+  .spotify-wrap { animation: fadeUp 0.8s ease 0.15s both; }
+  .stats-row { animation: fadeUp 0.8s ease 0.25s both; }
+  .filter-row { animation: fadeUp 0.8s ease 0.35s both; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eyebrow">Show Preview</div>
+  <h1>Melvin Seals<br>&amp; <em>JGB</em></h1>
+  <div class="hero-sub">What might they play? Every song from the last 5 shows.</div>
+  <div class="hero-venue">
+    <div class="pulse-dot"></div>
+    The Regent Theater, Los Angeles &middot; Mar 30, 2026
+  </div>
+  <div id="countdown" class="countdown"></div>
+  <div class="names">A field guide for <span>Akash</span> &amp; <span>Ankur</span></div>
+</div>
+
+<div class="stats-row">
+  <div class="stat">
+    <div class="stat-num" id="song-count">60</div>
+    <div class="stat-label">Songs</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">5</div>
+    <div class="stat-label">Shows</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">5</div>
+    <div class="stat-label">Every Night</div>
+  </div>
+</div>
+
+<div class="spotify-wrap">
+  <div class="spotify-label">Listen Along</div>
+  <iframe src="https://open.spotify.com/embed/playlist/3uy1qGnUkUy2rlxRj7Jug9?utm_source=generator&theme=0" height="352" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+<div class="filter-row">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="heavy">Heavy Rotation</button>
+  <button class="filter-btn" data-filter="dead">Dead</button>
+  <button class="filter-btn" data-filter="jgb">Garcia / JGB</button>
+  <button class="filter-btn" data-filter="soul">Soul</button>
+  <button class="filter-btn" data-filter="reggae">Reggae</button>
+  <button class="filter-btn" data-filter="dylan">Dylan</button>
+  <button class="filter-btn" data-filter="rock">Rock</button>
+</div>
+
+<div id="cards"></div>
+
+<div class="shows-section">
+  <h2>Shows Sourced</h2>
+  <div class="show-item upcoming">
+    <div class="show-date">Mar 30 <span class="show-label"><span class="pulse-dot" style="width:6px;height:6px"></span> Tomorrow</span></div>
+    <div class="show-venue">The Regent Theater, Los Angeles</div>
+  </div>
+  <div class="show-item"><div class="show-date">Mar 28, 2026</div><div class="show-venue">Fillmore Auditorium, Denver</div></div>
+  <div class="show-item"><div class="show-date">Mar 07, 2026</div><div class="show-venue">The Warfield, San Francisco</div></div>
+  <div class="show-note">Special night: Set 1 new Melvin originals, Set 2 Bob Weir tribute</div>
+  <div class="show-item"><div class="show-date">Mar 01, 2026</div><div class="show-venue">Ardmore Music Hall, Ardmore PA</div></div>
+  <div class="show-item"><div class="show-date">Feb 28, 2026</div><div class="show-venue">Capitol Theatre, Port Chester NY</div></div>
+  <div class="show-item"><div class="show-date">Feb 27, 2026</div><div class="show-venue">The Cabot, Beverly MA</div></div>
+</div>
+
+<div class="footer">
+  Setlist data from setlist.fm<br>
+  The Pageant (3/13) and Belly Up (3/29) had no setlists posted
+</div>
+
+<script>
+const TAG_LABELS = {dead:'Dead',jgb:'JGB',soul:'Soul',reggae:'Reggae',dylan:'Dylan',rock:'Rock'};
+
+const songs = [
+  {t:"Ain't No Bread in the Breadbox",p:"Norton Buffalo",s:"Jerry Garcia Band",c:5,d:"Played at every single show in this run. A funky blues-rock number by harmonica virtuoso Norton Buffalo \u2014 the one song you're almost guaranteed to hear tomorrow.",tags:["jgb"]},
+  {t:"Drums / Space",p:"Grateful Dead tradition",s:"",c:5,d:"The freeform percussion and ambient improvisation segment from every Dead show. JGB carries on the tradition nightly, giving the rhythm section a spotlight for exploratory drumming.",tags:["dead"]},
+  {t:"Tore Up Over You",p:"Hank Ballard & The Midnighters",s:"",c:4,d:"4 of 5 shows. A gritty R&B classic from the late 1950s. JGB uses it as a showcase for soulful vocals and Melvin's churchy organ work.",tags:["soul"]},
+  {t:"Mystery Train",p:"Junior Parker",s:"Elvis Presley",c:2,d:"One of the most iconic early rock and roll songs, first cut by Junior Parker in 1953 and famously covered by Elvis at Sun Records. JGB stretches it into a hypnotic, extended jam vehicle.",tags:["rock"]},
+  {t:"I Was Made to Love Her",p:"Stevie Wonder",s:"",c:2,d:"A 1967 Motown hit that was one of young Stevie Wonder's early masterpieces. JGB's rendition highlights raw romantic urgency with Melvin's organ adding gospel heat.",tags:["soul"]},
+  {t:"Quinn the Eskimo (The Mighty Quinn)",p:"Bob Dylan",s:"Manfred Mann",c:2,d:"A whimsical, infectious Dylan song from the Basement Tapes sessions that became a #1 hit for Manfred Mann in 1968. JGB plays it as an exuberant crowd-pleaser.",tags:["dylan"]},
+  {t:"My Sisters and Brothers",p:"Charles Johnson",s:"",c:2,d:"A gospel tune rooted in the Black church tradition, performed by JGB as a joyful communal sing-along. Typically closes sets on an uplifting note.",tags:["soul"]},
+  {t:"Stop That Train",p:"Keith & Tex",s:"Bob Marley",c:2,d:"A rocksteady/reggae classic first recorded in Jamaica by Keith & Tex. JGB renders it as a laid-back groove that lets Melvin's Hammond organ shimmer.",tags:["reggae"]},
+  {t:"The Other One",p:"Grateful Dead",s:"",c:2,d:"One of the Dead's most intense and psychedelic compositions, written by Bob Weir and Bill Kreutzmann. JGB channels the same improvisational energy into extended exploratory jams.",tags:["dead"]},
+  {t:"New Speedway Boogie",p:"Grateful Dead",s:"",c:2,d:"Written by Garcia and Hunter in the aftermath of the Altamont tragedy in 1969. The song grapples with disillusionment and the darker side of the counterculture movement.",tags:["dead"]},
+  {t:"Truckin'",p:"Grateful Dead",s:"",c:2,d:"The Dead's semi-autobiographical 1970 anthem about life on the road. One of their most recognizable songs and a counterculture touchstone.",tags:["dead"]},
+  {t:"Like a Road",p:"Jerry Garcia",s:"Robert Hunter",c:2,d:"A Garcia/Hunter composition from Garcia's solo work. A mellow, reflective tune about life's journey with a warm, pastoral quality.",tags:["jgb"]},
+  {t:"Feel Like a Stranger",p:"Grateful Dead",s:"",c:2,d:"A Bob Weir-penned disco-influenced rocker that opened many Dead shows in the early 1980s. Its funky groove makes it a natural JGB fit.",tags:["dead"]},
+  {t:"One More Saturday Night",p:"Grateful Dead (Bob Weir)",s:"",c:2,d:"Bob Weir's rollicking Chuck Berry-style rocker that traditionally closed Saturday Dead shows. A party anthem built for crowd participation.",tags:["dead"]},
+  {t:"Cats Under the Stars",p:"Jerry Garcia Band",s:"",c:2,d:"The title track from the only JGB studio album (1978), a jazzy, nocturnal tune about love and mystery. One of the few true JGB originals and a deep fan favorite.",tags:["jgb"]},
+  {t:"In the Midnight Hour",p:"Wilson Pickett",s:"",c:1,d:"Wilson Pickett's 1965 soul anthem, co-written with Steve Cropper at Stax Records. JGB uses it as a high-powered soul workout.",tags:["soul"]},
+  {t:"Struggling Man",p:"Jimmy Cliff",s:"",c:1,d:"A reggae classic from 1973 about perseverance in the face of hardship. JGB's version preserves its rootsy, hopeful feel.",tags:["reggae"]},
+  {t:"The Way You Do the Things You Do",p:"The Temptations",s:"",c:1,d:"A classic 1964 Motown hit written by Smokey Robinson. JGB plays it as a feel-good groove tune that showcases the band's R&B chops.",tags:["soul"]},
+  {t:"Let It Rock",p:"Chuck Berry",s:"",c:1,d:"A Chuck Berry rocker from 1960 about a railroad worker. JGB cranks up the energy with this one as a barn-burner.",tags:["rock"]},
+  {t:"Don't Let Go",p:"Roy Hamilton",s:"Jerry Garcia Band",c:1,d:"Originally a 1958 R&B hit by Roy Hamilton, Garcia transformed it into an epic jam vehicle that could stretch past 20 minutes. One of the most beloved songs in the JGB canon.",tags:["soul","jgb"]},
+  {t:"Going Down the Road Feeling Bad",p:"Traditional",s:"Grateful Dead",c:1,d:"An old American folk/blues standard that the Dead adopted as a raucous concert closer. JGB maintains that rollicking, communal sing-along energy.",tags:["dead"]},
+  {t:"They Love Each Other",p:"Jerry Garcia",s:"Robert Hunter",c:1,d:"A sweet, upbeat Garcia/Hunter love song. JGB plays the mellow, grooving later version that evolved from its early acoustic form.",tags:["jgb","dead"]},
+  {t:"Swing Low, Sweet Chariot",p:"Traditional (Spiritual)",s:"",c:1,d:"One of the most famous African American spirituals, dating to the mid-19th century. JGB performs it as a reverent gospel moment within the set.",tags:["soul"]},
+  {t:"The Night They Drove Old Dixie Down",p:"The Band",s:"",c:1,d:"Robbie Robertson's masterful 1969 narrative about the fall of the Confederacy. Widely regarded as one of the greatest songs in American rock.",tags:["rock"]},
+  {t:"Waiting for a Miracle",p:"Bruce Cockburn",s:"",c:1,d:"A politically charged 1984 song by Bruce Cockburn. JGB strips away some politics and emphasizes its driving, hopeful rhythm.",tags:["rock"]},
+  {t:"Lay Down Sally",p:"Eric Clapton",s:"",c:1,d:"A breezy 1977 country-rock single from Slowhand. JGB's version emphasizes the easygoing shuffle and gives Melvin room to stretch.",tags:["rock"]},
+  {t:"That's All Right",p:"Arthur 'Big Boy' Crudup",s:"Elvis Presley",c:1,d:"The song that launched rock and roll \u2014 Crudup's 1946 blues original became Elvis's first single at Sun Records. JGB plays it as a roots-rock shuffle.",tags:["rock"]},
+  {t:"And It Stoned Me",p:"Van Morrison",s:"",c:1,d:"The opening track from Moondance (1970), a nostalgic reverie about a childhood day of fishing. Its gentle, rolling feel suits JGB perfectly.",tags:["rock"]},
+  {t:"Dancing in the Street",p:"Martha and the Vandellas",s:"Grateful Dead",c:1,d:"The iconic 1964 Motown hit that became an anthem of joy and protest. The Dead made it a concert staple, and JGB continues the tradition.",tags:["soul","dead"]},
+  {t:"No Woman, No Cry",p:"Bob Marley & The Wailers",s:"",c:1,d:"Marley's tender 1975 reggae ballad about growing up in Trenchtown. JGB leans into its warm, communal spirit with extended organ passages.",tags:["reggae"]},
+  {t:"Hey Pocky A-Way",p:"The Meters",s:"The Neville Brothers",c:1,d:"A New Orleans funk classic rooted in Mardi Gras Indian chant traditions. JGB channels that second-line groove with Melvin driving from the organ bench.",tags:["soul"]},
+  {t:"Stir It Up",p:"Bob Marley & The Wailers",s:"",c:1,d:"One of Marley's earliest hits (1973), a seductive reggae love song. JGB plays it slow and deep, letting the groove percolate.",tags:["reggae"]},
+  {t:"Money Honey",p:"Clyde McPhatter & The Drifters",s:"Elvis Presley",c:1,d:"A foundational 1953 R&B hit that helped bridge jump blues and rock and roll. JGB's take emphasizes the song's raw jukebox energy.",tags:["soul"]},
+  {t:"Friend of the Devil",p:"Grateful Dead",s:"",c:1,d:"A beloved Garcia/Hunter/Dawson folk tune from American Beauty (1970). JGB typically plays it at a slower, more contemplative tempo.",tags:["dead"]},
+  {t:"Expressway to Your Heart",p:"The Soul Survivors",s:"",c:1,d:"A 1967 blue-eyed soul hit from Philadelphia. JGB uses it as a high-energy set-opener that gets the crowd moving immediately.",tags:["soul"]},
+  {t:"Bright Side of the Road",p:"Van Morrison",s:"",c:1,d:"An exuberant 1979 Van Morrison track brimming with optimism. JGB captures its breezy, life-affirming spirit.",tags:["rock"]},
+  {t:"Corrina",p:"Traditional",s:"Bob Dylan / Taj Mahal",c:1,d:"A folk-blues standard with roots stretching back to the 1920s. JGB plays a version closest to the Taj Mahal arrangement.",tags:["rock","dylan"]},
+  {t:"Evangeline",p:"The Band",s:"Emmylou Harris",c:1,d:"A gorgeous waltz from The Last Waltz, featuring Emmylou Harris on the original. A Cajun love story with a haunting, cinematic quality.",tags:["rock"]},
+  {t:"The Maker",p:"Daniel Lanois",s:"",c:1,d:"A deeply spiritual song from Lanois's 1989 album Acadie. Its gospel-infused intensity makes it a powerful vehicle for Melvin's organ.",tags:["rock"]},
+  {t:"Neighbor, Neighbor",p:"Jimmy Hughes",s:"",c:1,d:"A deep-cut 1960s Southern soul number. JGB revived this obscure gem as a funky, organ-driven workout that rewards the crate-digger fans.",tags:["soul"]},
+  {t:"Eyes of the World",p:"Grateful Dead",s:"",c:1,d:"A luminous Garcia/Hunter composition from Wake of the Flood (1973). One of the Dead's most uplifting and improvisationally rich songs.",tags:["dead"]},
+  {t:"I Feel Like Dynamite",p:"King Floyd",s:"",c:1,d:"A deep funk cut by New Orleans soul singer King Floyd. JGB turns it into a high-energy workout anchored by Melvin's explosive organ.",tags:["soul"]},
+  {t:"Sugaree",p:"Jerry Garcia",s:"Robert Hunter",c:1,d:"A Garcia/Hunter classic from Garcia's first solo album (1972). One of the most beloved songs in the entire Garcia repertoire.",tags:["jgb","dead"]},
+  {t:"Midnight Moonlight",p:"Peter Rowan",s:"Old & In the Way",c:1,d:"Written for Old & In the Way, the bluegrass supergroup Rowan shared with Garcia. JGB electrifies it into a soaring psychedelic jam.",tags:["jgb"]},
+  {t:"Help on the Way",p:"Grateful Dead",s:"",c:1,d:"The first movement of the Help>Slip>Frank suite from Blues for Allah (1975). A complex, progressive piece that builds tension.",tags:["dead"]},
+  {t:"Slipknot!",p:"Grateful Dead",s:"",c:1,d:"The instrumental middle of the Help>Slip>Frank suite \u2014 rhythmically complex and deeply improvisational. One of the Dead's most adventurous jam spaces.",tags:["dead"]},
+  {t:"Shakedown Street",p:"Grateful Dead",s:"",c:1,d:"The title track from the Dead's 1978 disco-influenced album. Its funky groove is a natural fit for JGB's R&B-heavy approach.",tags:["dead"]},
+  {t:"Reggae Boogie",p:"Melvin Seals",s:"(original)",c:1,d:"A new Melvin original debuted at the Warfield. Part of a special all-originals first set \u2014 Melvin writing new music, not just carrying the torch.",tags:["jgb"]},
+  {t:"Same Old Blues",p:"Melvin Seals",s:"(original)",c:1,d:"A new Melvin blues number from the Warfield's special first set. Leans into his deep roots in gospel and blues organ.",tags:["jgb"]},
+  {t:"It's Samba Night",p:"Melvin Seals",s:"(original)",c:1,d:"A Latin-inflected groove premiered at the Warfield. JGB exploring rhythmic territory beyond their usual Americana/soul palette.",tags:["jgb"]},
+  {t:"Reflections",p:"Melvin Seals",s:"(original)",c:1,d:"A contemplative new original from the all-originals Warfield set. An introspective moment in JGB's typically high-energy catalog.",tags:["jgb"]},
+  {t:"Lucky Strike",p:"Melvin Seals",s:"(original)",c:1,d:"A new Melvin Seals original rounding out the Warfield's fresh compositions. New music from the bandleader himself.",tags:["jgb"]},
+  {t:"I Second That Emotion",p:"Smokey Robinson & The Miracles",s:"",c:1,d:"Smokey's 1967 Motown classic about playing it cool in love. A silky groove that lets Melvin's organ slide between the vocal lines.",tags:["soul"]},
+  {t:"(I'm a) Road Runner",p:"Junior Walker & The All Stars",s:"",c:1,d:"A 1966 Motown hit driven by Junior Walker's wailing saxophone. JGB swaps sax for organ but keeps the relentless energy intact.",tags:["soul"]},
+  {t:"The Wheel",p:"Grateful Dead",s:"",c:1,d:"A Garcia/Hunter meditation on fate and karma. Its hypnotic, circular groove perfectly captures the 'the wheel is turning and you can't slow down' feeling.",tags:["dead"]},
+  {t:"Jack Straw",p:"Grateful Dead",s:"",c:1,d:"A Weir/Hunter tale of two drifters from Europe '72. One of the Dead's most enduring concert openers, given a JGB twist at the Warfield.",tags:["dead"]},
+  {t:"Let's Spend the Night Together",p:"The Rolling Stones",s:"",c:1,d:"A classic 1967 Stones single. JGB gives it a funkier, more organ-heavy arrangement that Melvin owns completely.",tags:["rock"]},
+  {t:"Knockin' on Heaven's Door",p:"Bob Dylan",s:"",c:1,d:"Written for the 1973 film Pat Garrett and Billy the Kid. JGB plays it with a reverent, gospel-tinged arrangement.",tags:["dylan"]},
+  {t:"Mama Tried",p:"Merle Haggard",s:"",c:1,d:"Haggard's autobiographical 1968 country classic. The Dead made it a concert staple, and JGB carries on that tradition.",tags:["rock"]},
+  {t:"When I Paint My Masterpiece",p:"Bob Dylan",s:"The Band",c:1,d:"A whimsical Dylan song about artistic aspiration, first on The Band's Cahoots (1971). Humor and longing for creative transcendence.",tags:["dylan"]},
+];
+
+songs.sort((a,b) => b.c - a.c || a.t.localeCompare(b.t));
+
+const container = document.getElementById('cards');
+const countEl = document.getElementById('song-count');
+
+function tagHTML(tags) {
+  return tags.map(t => {
+    const label = TAG_LABELS[t] || t;
+    return `<span class="tag tag-${t}">${label}</span>`;
+  }).join('');
+}
+
+function render(filter) {
+  let filtered = songs;
+  if (filter === 'heavy') filtered = songs.filter(s => s.c >= 2);
+  else if (filter !== 'all') filtered = songs.filter(s => s.tags.includes(filter));
+
+  countEl.textContent = filtered.length;
+  container.innerHTML = filtered.map((s, i) => `
+    <div class="song-card" style="transition-delay:${Math.min(i * 30, 600)}ms">
+      <div class="song-header">
+        <div class="song-title">${s.t}</div>
+        <div class="play-count pc-${Math.min(s.c,5)}">${s.c}</div>
+      </div>
+      <div class="meta-row">
+        <span class="primary-artist">${s.p}</span>
+        ${s.s ? `<span class="secondary-artist">\u00b7 ${s.s}</span>` : ''}
+        ${tagHTML(s.tags)}
+      </div>
+      <div class="desc">${s.d}</div>
+    </div>
+  `).join('');
+
+  requestAnimationFrame(() => {
+    const cards = container.querySelectorAll('.song-card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    cards.forEach(c => observer.observe(c));
+  });
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    render(btn.dataset.filter);
+  });
+});
+
+render('all');
+
+// Countdown — Mar 30, 2026 7:00 PM Pacific
+const SHOW_TIME = new Date('2026-03-30T19:00:00-07:00').getTime();
+const cdEl = document.getElementById('countdown');
+let lastVals = {};
+
+function pad(n) { return String(n).padStart(2, '0'); }
+
+function updateCountdown() {
+  const now = Date.now();
+  const diff = SHOW_TIME - now;
+
+  if (diff <= 0) {
+    cdEl.innerHTML = '<div class="cd-done">Showtime. Enjoy it.</div>';
+    return;
+  }
+
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+
+  const units = [];
+  if (d > 0) units.push({v: pad(d), l: d === 1 ? 'Day' : 'Days', k: 'd'});
+  units.push({v: pad(h), l: h === 1 ? 'Hour' : 'Hours', k: 'h'});
+  units.push({v: pad(m), l: m === 1 ? 'Min' : 'Mins', k: 'm'});
+  units.push({v: pad(s), l: s === 1 ? 'Sec' : 'Secs', k: 's'});
+
+  const html = units.map((u, i) => {
+    const changed = lastVals[u.k] !== u.v;
+    lastVals[u.k] = u.v;
+    const sep = i < units.length - 1 ? '<div class="cd-sep">:</div>' : '';
+    return `<div class="cd-unit"><div class="cd-num"><span class="tick${changed ? ' flip' : ''}">${u.v}</span></div><div class="cd-label">${u.l}</div></div>${sep}`;
+  }).join('');
+
+  cdEl.innerHTML = html;
+
+  // Remove flip class after animation
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      cdEl.querySelectorAll('.tick.flip').forEach(el => el.classList.remove('flip'));
+    }, 50);
+  });
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>
